@@ -18,6 +18,21 @@ RSpec.describe Api::SessionsController, type: :controller do
     before { post :create, session: { email: 'one@digits.com', password: '12345678' }, format: :json }
 
     it { should render_template :create }
+
+    # let(:params) { { session: { email: 'bob@marley.com', password: 'bob' } } }
+    #
+    # let(:object) { stub_model Session }
+    #
+    # before { expect(Session).to receive(:new)
+    #                      .with(permit!(email: 'bob@marley.com', password: 'bob'))
+    #                      .and_return(object) }
+    #
+    # before { expect(object).to receive(:save!) }
+    #
+    # before { post :create, session: { email: 'one@digits.com', password: '12345678' }, format: :json }
+    #
+    # it { should render_template :create }
+
   end
 
   describe '#destroy.json' do

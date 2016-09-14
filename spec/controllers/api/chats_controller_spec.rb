@@ -40,6 +40,7 @@ RSpec.describe Api::ChatsController, type: :controller do
 
 
   describe '#collection' do
+
     let(:params) { { page: 5 } }
 
     before { expect(subject).to receive(:params).and_return(params) }

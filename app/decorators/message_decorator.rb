@@ -4,20 +4,16 @@ class MessageDecorator < Draper::Decorator
   decorates_association :author
 
   def as_json *args
-  
+
     {
       text: text,
       author: author,
-      status: status
+      status: message_status
     }
   end
 
-  def status
-    message_users.find_by(user: current_user).status
-  end
-
-  def current_user
-    h.current_user
+  def message_status
+    message_users.find_by(user: h.current_user).status
   end
 
 end

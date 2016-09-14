@@ -9,6 +9,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'draper'
 
+gem 'sidekiq'
+
 gem 'rails-observers', github: 'rails/rails-observers'
 gem 'pg_search'
 gem 'bcrypt'
@@ -34,5 +36,6 @@ end
 group :development do
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
+  gem "letter_opener"
 
 end

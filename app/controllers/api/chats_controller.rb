@@ -1,14 +1,10 @@
 class Api::ChatsController < ApplicationController
+skip_before_action :authenticate
 
-  # skip_before_action :authenticate
-
-  # def mark_as_read
-  #   Chat.find(params[:id]).users.each do |t|
-  #     t.message_users.update_all(status: 1)
-  #   end
-  #   head :ok
-  # end
-
+  def create
+    super
+    NewChatJob.perform_now(resource)
+  end
 
   private
   def build_resource

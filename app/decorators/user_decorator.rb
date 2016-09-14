@@ -1,12 +1,12 @@
 class UserDecorator < Draper::Decorator
   delegate_all
   def as_json *args
-    # byebug
+
     {
       id: id,
       full_name: full_name,
       email: email,
-      unreaded_chats_count: unread_chats_count
+      # unreaded_chats_count: unread_chats_count
     }
   end
 
@@ -14,9 +14,14 @@ class UserDecorator < Draper::Decorator
     "#{ first_name } #{ last_name }"
   end
 
-  def unread_chats_count
-
-  end
+  # def unread_chats_count
+  #   byebug
+  #   # messages.unread.chat.count
+  #
+  #   # chats.joins(:messages).where(message: model.message_users.message_ids).count
+  #
+  #   messages.
+  # end
 
 
 

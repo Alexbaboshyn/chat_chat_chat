@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create, :index, :show]
 
-    resource :profile, controller: 'users', only: [:show, :update]
+    resource :profile, only: [:show, :update]
 
     resource :session, only: [:create, :destroy]
 

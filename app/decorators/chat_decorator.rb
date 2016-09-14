@@ -24,7 +24,7 @@ decorates_association :messages
         name: name,
         users: users,
         unread_messages_count: unread_messages_count,
-        messages: messages
+        # messages: messages
       }
 
     else
@@ -42,13 +42,7 @@ decorates_association :messages
 
 
   def unread_messages_count
-    counter = []
-    messages.each do |t|
-      if t.message_users.find_by(user: h.current_user).unread?
-        counter << t
-      end
-    end
-    counter.size
+    MessageUser.unread.where(user: h.current_user, message: model.messages).count
   end
 
 
