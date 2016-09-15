@@ -3,8 +3,7 @@ skip_before_action :authenticate, only: [:create]
 
   def create
     super
-    head :created
-    NewUserJob.perform_now(@user)
+    head :created    
   end
 
 

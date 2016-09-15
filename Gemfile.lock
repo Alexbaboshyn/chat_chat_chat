@@ -66,12 +66,17 @@ GEM
       activemodel-serializers-xml (~> 1.0)
       activesupport (~> 5.0)
       request_store (~> 1.0)
+    email_spec (2.1.0)
+      htmlentities (~> 4.3.3)
+      launchy (~> 2.1)
+      mail (~> 2.6.3)
     email_validator (1.6.0)
       activemodel
     erubis (2.7.0)
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    htmlentities (4.3.4)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -214,6 +219,7 @@ DEPENDENCIES
   bcrypt
   byebug
   draper
+  email_spec
   email_validator
   jbuilder (~> 2.5)
   kaminari

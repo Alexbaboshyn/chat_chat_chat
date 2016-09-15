@@ -18,7 +18,7 @@ RSpec.describe Session, type: :lib do
   describe '#user' do
     before { expect(User).to receive(:find_by).with(email: 'test@test.com') }
 
-    it { expect { subject.send :user }.to_not raise_error}
+    it { expect { subject.send(:user) }.to_not raise_error}
   end
 
   context 'validations' do
@@ -63,26 +63,32 @@ RSpec.describe Session, type: :lib do
     end
   end
 
-  describe '#destroy!' do
-    before do
-      expect(subject).to receive(:user) do
-        double.tap do |a|
-          expect(a).to receive(:auth_token) do
-            double.tap do |b|
-              expect(b).to receive(:destroy!)
-            end
-          end
-        end
-      end
-    end
-
-    it { expect { subject.destroy! }.to_not raise_error }
-  end
+  # describe '#destroy!' do
+  #   before do
+  #     expect(subject).to receive(:user) do
+  #       double.tap do |a|
+  #         expect(a).to receive(:auth_token) do
+  #           double.tap do |b|
+  #             expect(b).to receive(:destroy!)
+  #           end
+  #         end
+  #       end
+  #     end
+  #   end
+  #
+  #   it { expect { subject.destroy! }.to_not raise_error }
+  # end
 
 
   describe '#as_json' do
-    before { expect(subject).to receive(:token).and_return('XXXX-YYYY-ZZZZ') }
+
+    before do
+      expect(subject).to receive(:user) do
+        double.tap { |a| expect(a).to receive(token).and_return('XXXX-YYYY-ZZZZ') }
+      end
+    end
 
     its(:as_json) { should eq token: 'XXXX-YYYY-ZZZZ' }
   end
+
 end

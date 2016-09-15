@@ -7,31 +7,20 @@ RSpec.describe Api::SessionsController, type: :controller do
   it { should route(:delete, 'api/session').to(action: :destroy) }
 
   describe '#create.json' do
-    before { expect(subject).to receive(:build_resource) }
 
-    before do
-      expect(subject).to receive(:resource) do
-        double.tap { |a| expect(a).to receive(:save!) }
-      end
-    end
+    let(:params) {  { email: 'bob@marley.com', password: 'bob' }  }
 
-    before { post :create, session: { email: 'one@digits.com', password: '12345678' }, format: :json }
+    let(:object) { stub_model User }
+
+    before { expect(Session).to receive(:new)
+                         .with(permit!(params))
+                         .and_return(object) }
+
+    before { expect(object).to receive(:save!) }
+
+    before { process :create, method: :post, params: {session: params}, format: :json }
 
     it { should render_template :create }
-
-    # let(:params) { { session: { email: 'bob@marley.com', password: 'bob' } } }
-    #
-    # let(:object) { stub_model Session }
-    #
-    # before { expect(Session).to receive(:new)
-    #                      .with(permit!(email: 'bob@marley.com', password: 'bob'))
-    #                      .and_return(object) }
-    #
-    # before { expect(object).to receive(:save!) }
-    #
-    # before { post :create, session: { email: 'one@digits.com', password: '12345678' }, format: :json }
-    #
-    # it { should render_template :create }
 
   end
 

@@ -1,5 +1,6 @@
 
 
 You have new message in "<%= @chat.name %>" conversation
-
+<% if @user.message_users.unread.count > 1 %>
 Also, you have <%=  @user.message_users.unread.count %> unread messages
+<% end %>

@@ -1,11 +1,7 @@
 class Api::ChatsController < ApplicationController
 skip_before_action :authenticate
 
-  def create
-    super
-    NewChatJob.perform_now(resource)
-  end
-
+  
   private
   def build_resource
     @resource = Chat.new resource_params

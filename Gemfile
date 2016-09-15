@@ -9,13 +9,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'draper'
 
-gem 'sidekiq'
 
 gem 'rails-observers', github: 'rails/rails-observers'
 gem 'pg_search'
 gem 'bcrypt'
 gem 'kaminari'
 gem 'email_validator'
+
+gem 'sidekiq'
 
 
 group :development, :test do
@@ -31,11 +32,13 @@ group :test do
   gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers'
   gem 'simplecov', require: false
+  gem 'email_spec'
 end
 
 group :development do
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   gem "letter_opener"
+
 
 end

@@ -24,7 +24,7 @@ RSpec.describe MessageDecorator do
   # describe '#message_status' do
   # # message_users.find_by(user: h.current_user).status
   #   before do
-  #     expect(subject).to receive(:message_users) do
+  #     expect(message).to receive(:message_users) do
   #       double.tap do |a|
   #         expect(a).to receive(:find_by).with(user: user) do
   #           double.tap { |b| expect(b).to receive(:status) }
@@ -32,7 +32,7 @@ RSpec.describe MessageDecorator do
   #       end
   #     end
   #   end
-  #   it { expect{ subject.send(:message_status) }.to_not raise_error }
+  #   it { expect{ message.to receive(:message_status) }.to_not raise_error }
   # end
 
 end

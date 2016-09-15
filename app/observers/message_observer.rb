@@ -9,7 +9,7 @@ class MessageObserver < ActiveRecord::Observer
         message.message_users.create!(user: user, status: 1)
       else
         message.message_users.create!(user: user)
-        NewMessageJob.perform_now(user, message)
+        NewMessageJob.set(wait: 5.seconds).perform_later(user, message)
       end
     end
   end

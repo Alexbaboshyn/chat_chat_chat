@@ -2,16 +2,14 @@ class ChatMailer < ApplicationMailer
 
   def new_message(user, message)
     @user = user
-
     @chat = message.chat
-
     mail(to: @user.email , subject: "New message!")
   end
 
 
   def invitate_user(user)
     @user = user
-    mail(to: @user.email , subject: "Wellcome!")
+    mail(to: @user.email , subject: "Welcome!")
   end
 
 
